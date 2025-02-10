@@ -3,10 +3,22 @@
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WorkerController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/api/workers', [WorkerController::class, 'index'])->name('workers.index');
+
+Route::post('/api/workers', [WorkerController::class, 'store'])->name('workers.store');
+
+Route::get('/api/workers/{worker}', [WorkerController::class, 'show'])->name('workers.show');
+
+Route::put('/api/workers/{worker}', [WorkerController::class, 'update'])->name('workers.update');
+Route::apiResource('workers', WorkerController::class);
+Route::delete('/api/workers/{worker}', [WorkerController::class, 'destroy'])->name('workers.destroy');
 
 
 Route::get('/api/menus', [MenuController::class, 'index'])->name('menus.index');

@@ -17,13 +17,12 @@ class AuthController extends Controller
 
         try {
             $api_token = Str::random(60);  // Explicitly generate token
-            Log::info('Generated API Token: ' . $api_token); // Log the generated token
     
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'api_token' => $api_token,  // Make sure this is being set
+                'api_token' => $api_token, 
             ]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -40,13 +39,12 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $user = User::where('email', $request->email)->first(); // Check email instead of name
+        $user = User::where('email', $request->email)->first(); 
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        // Simple token-based session
         $token = base64_encode(Str::random(40)); // Generate a random token
         $user->update(['api_token' => $token]); // Save token in the database
 

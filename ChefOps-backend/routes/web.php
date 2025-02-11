@@ -4,10 +4,7 @@ use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WorkerController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\OrdersController;
 
 
 Route::get('/api/workers', [WorkerController::class, 'index'])->name('workers.index');
@@ -33,3 +30,7 @@ Route::apiResource('menus', MenuController::class);Route::apiResource('menus', M
 
 Route::post('/api/login', [AuthController::class, 'login']);
 Route::post('/api/register', [AuthController::class, 'register']);
+
+Route::get('/api/orders', [OrdersController::class, 'index']);
+Route::delete('/api/orders/{id}', [OrdersController::class, 'destroy']);
+Route::post('/api/orders', [OrdersController::class, 'add']);  

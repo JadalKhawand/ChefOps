@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('role'); 
-            $table->rememberToken();
+        Schema::create('order_menu', function (Blueprint $table) {
+            $table->id(); 
+            $table->foreignId('orderID')->constrained('orders', 'orderID')->onDelete('cascade'); 
+            $table->foreignId('menuID')->constrained('menus', 'menuID');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('order_menu');
     }
 };

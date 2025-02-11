@@ -34,3 +34,4 @@ Route::post('/api/register', [AuthController::class, 'register']);
 Route::get('/api/orders', [OrdersController::class, 'index']);
 Route::delete('/api/orders/{id}', [OrdersController::class, 'destroy']);
 Route::post('/api/orders', [OrdersController::class, 'add']);  
+Route::put('/api/orders/{id}', [OrdersController::class, 'update']);  

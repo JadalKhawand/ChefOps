@@ -74,6 +74,40 @@ class OrdersController extends Controller
     }
 }
 
+public function update(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'menu_items' => 'required|array',
+                'menu_items.*.menuID' => 'required|exists:menus,menuID',
+                'menu_items.*.quantity' => 'required|integer|min:1',
+            ]);
+
+            $order = Order::findOrFail($id);
+
+            $menuItems = [];
+            foreach ($request->menu_items as $item) {
+                $menuItems[$item['menuID']] = ['quantity' => $item['quantity']];
+            }
+            $order->menus()->sync($menuItems); 
+
+            $order->load('menus');
+
+            return response()->json([
+                'message' => 'Order updated successfully',
+                'order' => $order,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error updating order: ' . $e->getMessage());
+
+            return response()->json([
+                'message' => 'An error occurred while updating the order',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+
 
 public function destroy($id)
 {

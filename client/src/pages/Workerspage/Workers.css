@@ -26,7 +26,6 @@ body {
   padding: 20px;
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -57,7 +56,7 @@ body {
 
 .worker-card {
   background: white;
-  padding: 50px;
+  padding: 20px; /* Reduced padding for better spacing */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -101,4 +100,47 @@ body {
 
 .delete-btn:hover {
   background: red;
+}
+
+/* Edit Form Styles */
+.edit-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-form .save-btn,
+.edit-form .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-form .save-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.edit-form .cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-form .save-btn:hover {
+  background-color: #45a049;
+}
+
+.edit-form .cancel-btn:hover {
+  background-color: #e53935;
 }

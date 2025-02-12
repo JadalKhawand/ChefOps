@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Full page height */
+}
+
+.workers-container {
+  flex: 1; /* Takes remaining space after sidebar */
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 250px; /* Adjust width as needed */
+  background: black;
+  color: white;
+  height: 100vh; /* Full height */
+  padding: 20px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-worker {
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.workers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.worker-card {
+  background: white;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.worker-info strong {
+  font-size: 1rem;
+}
+
+.worker-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.worker-info a {
+  color: black;
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.edit-btn:hover {
+  background: #ddd;
+}
+
+.delete-btn:hover {
+  background: red;
+}

@@ -1,0 +1,63 @@
+/* Sidebar Styling */
+.custom-sidebar {
+  width: 250px;
+  background-color: black; /* Full black sidebar */
+  color: white;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Navigation Menu */
+.custom-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.custom-sidebar nav ul li {
+  margin: 10px 0;
+}
+
+.custom-sidebar nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.custom-sidebar nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer Section */
+.custom-sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.custom-sidebar-footer button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.custom-email-btn {
+  background-color:rgba(255, 255, 255, 0.2); /* White button */
+  color: white;
+}
+
+.custom-terms-btn {
+  background-color: rgba(255, 255, 255, 0.2); /* White button */
+  color: white;
+}

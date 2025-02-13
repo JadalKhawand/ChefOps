@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index(Request $request)
     {
         $category = $request->query('category');
@@ -22,9 +21,7 @@ class MenuController extends Controller
     }
     
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
        
@@ -47,53 +44,48 @@ class MenuController extends Controller
         return response()->json($menu, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        return Menu::findOrFail($id);
+   
+    
+    public function update(Request $request, Menu $menu)
+{
+    // Validate the incoming data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'category' => 'required|string|max:255'
+    ]);
+
+    // Update the menu details
+    $menu->name = $validatedData['name'];
+    $menu->description = $validatedData['description'];
+    $menu->price = $validatedData['price'];
+    $menu->category = $validatedData['category'];
+
+    if ($request->hasFile('image')) {
+        $menu->image = $request->file('image')->store('menu_images', 'public');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Menu $menu)
-    {
-        // Validate the incoming data
+    if ($menu->save()) {
+        return response()->json($menu, 200); 
+    } else {
+        return response()->json(['error' => 'Failed to update menu item'], 400);
+    }
+}
+
+    
     
 
-    // Update the menu item
-    $menu->name = $request->name;
-    $menu->description = $request->description;
-    $menu->price = $request->price;
-    $menu->category = $request->category;
+public function destroy($id)
+{
+    $menu = Menu::findOrFail($id);
 
-    // Handle image upload if a new image is provided
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('menu_images', 'public');
-        $menu->image = $imagePath;
-    }
+    DB::table('order_menu')->where('menuID', $id)->update(['menuID' => null]);
 
-    // Save the changes to the database
-   if ($menu->save()) {
-            return response()->json($menu, 201);
-        } else {
-            return response()->json(['error' => 'Failed to create menu item'], 400);
-        }
+    $menu->delete();
 
-    // Redirect or return response
-    return redirect()->route('menus.index')->with('success', 'Menu item updated successfully!');
-    }
+    return response()->json(['message' => 'Menu deleted successfully']);
+}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Menu $menu)
-    {
-        $menu->delete();
 
-        // Redirect or return a response
-        return redirect()->route('menus.index')->with('success', 'Menu item deleted successfully!');
-    }
 }

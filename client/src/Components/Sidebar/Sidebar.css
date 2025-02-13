@@ -1,16 +1,14 @@
-/* Sidebar Styling */
 .custom-sidebar {
   width: 250px;
-  background-color: black; /* Full black sidebar */
+  background-color: black; 
   color: white;
   padding: 20px;
-  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* Navigation Menu */
 .custom-sidebar nav ul {
   list-style: none;
   padding: 0;
@@ -34,7 +32,6 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Footer Section */
 .custom-sidebar-footer {
   display: flex;
   flex-direction: column;
@@ -53,11 +50,11 @@
 }
 
 .custom-email-btn {
-  background-color:rgba(255, 255, 255, 0.2); /* White button */
+  background-color:rgba(255, 255, 255, 0.2); 
   color: white;
 }
 
 .custom-terms-btn {
-  background-color: rgba(255, 255, 255, 0.2); /* White button */
+  background-color: rgba(255, 255, 255, 0.2); 
   color: white;
 }

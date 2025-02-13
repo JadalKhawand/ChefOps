@@ -12,7 +12,6 @@ const HomePage = () => {
           <h2 className="welcome-text">Manage your restaurant efficiently.</h2>
         </header>
         
-        {/* Image Section */}
         <div className="image-container">
           <img src="./images/welcome.jpg"alt="Restaurant Overview" className="center-image" />
         </div>

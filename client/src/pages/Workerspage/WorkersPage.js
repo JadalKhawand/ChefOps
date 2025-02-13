@@ -3,7 +3,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import axios from "axios";
 import "./Workers.css";
 
-const API_URL = "http://127.0.0.1:8000/api/workers"; // Change this if your Laravel backend runs on another port
+const API_URL = "http://127.0.0.1:8000/api/workers"; 
 
 const WorkersPage = () => {
   const [workers, setWorkers] = useState([]);
@@ -61,6 +61,7 @@ const WorkersPage = () => {
       .catch(error => console.error("Error updating worker:", error));
   };
 
+  
   // Function to handle input changes for editing
   const handleInputChange = (e) => {
     const { name, value } = e.target;

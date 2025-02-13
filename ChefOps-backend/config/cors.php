@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],  // Adjust as needed
-    'allowed_methods' => ['*'],  // Allow all HTTP methods
-    'allowed_origins' => ['*'],  // Allow requests from all domains (change for security)
+    'paths' => ['api/*', 'sanctum/csrf-cookie'], 
+    'allowed_methods' => ['*'],  
+    'allowed_origins' => ['*'],  
     'allowed_origins_patterns' => [],
-    'allowed_headers' => ['*'],  // Allow all headers
+    'allowed_headers' => ['*'],  
     'exposed_headers' => [],
     'max_age' => 0,
-    'supports_credentials' => false, // Change to true if using authentication cookies
+    'supports_credentials' => false, 
 ];

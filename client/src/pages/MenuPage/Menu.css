@@ -1,0 +1,268 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%; 
+}
+
+.menu-container {
+  flex: 1;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 250px; 
+  background: black;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-menu {
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-info strong {
+  font-size: 1rem;
+}
+
+.menu-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.menu-info a {
+  color: black;
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.edit-btn:hover {
+  background: #ddd;
+}
+
+.delete-btn:hover {
+  background: red;
+}
+.add-menu-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 400px;
+}
+
+.add-menu-box h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.add-menu-box input,
+.add-menu-box textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.add-menu-box input[type="file"] {
+  padding: 0;
+}
+
+.add-menu-box .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.add-menu-box .save-btn,
+.add-menu-box .cancel-btn {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-menu-box .save-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.add-menu-box .cancel-btn {
+  background: #f44336;
+  color: white;
+}
+
+.add-menu-box .save-btn:hover,
+.add-menu-box .cancel-btn:hover {
+  opacity: 0.9;
+}
+
+.page-container {
+  position: relative;
+}
+
+.add-menu-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.category-dropdown {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.category-dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.category-dropdown option {
+  font-size: 1rem;
+  color: #333;
+}
+
+.menu-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.menu-info:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Image-container {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #eaeaea;
+}
+
+.menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-details {
+  max-width: 390px;
+  min-width: 390px;
+}
+
+.menu-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.menu-description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.menu-category,
+.menu-price,
+.menu-created-at {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+.menu-category strong,
+.menu-price strong,
+.menu-created-at strong {
+  font-weight: 600;
+  color: #222;
+}

@@ -8,21 +8,21 @@ body {
 .page-container {
   display: flex;
   width: 100%;
-  height: 100vh; /* Full page height */
+  height: 100vh; 
 }
 
 .workers-container {
-  flex: 1; /* Takes remaining space after sidebar */
+  flex: 1;
   max-width: 800px;
   margin: auto;
   padding: 20px;
 }
 
 .sidebar {
-  width: 250px; /* Adjust width as needed */
+  width: 250px; 
   background: black;
   color: white;
-  height: 100vh; /* Full height */
+  height: 100vh;
   padding: 20px;
 }
 

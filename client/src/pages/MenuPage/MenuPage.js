@@ -16,10 +16,10 @@ const MenuPage = () => {
 
   const [addMenuBox, setAddMenuBox] = useState(false);
 
-  // Fetch all menus from the backend
+  
   const fetchMenus = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/menus"); // Replace with your API endpoint
+      const response = await axios.get("http://localhost:8000/api/menus"); 
       setMenus(response.data);
     } catch (error) {
       console.error(

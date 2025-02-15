@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./OrderPage.css";
-
+import axios from "axios"
+import { useEffect } from "react";
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/orders"); 
-      setMenus(response.data);
+      setOrders(response.data);
     } catch (error) {
       console.error(
         "Error fetching orders:",

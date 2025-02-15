@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./OrderPage.css";
-import axios from "axios"
-import { useEffect } from "react";
+import axios from "axios";
+
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/orders"); 
-      setOrders(response.data);
+      const response = await axios.get("http://localhost:8000/api/orders");
+      setOrders(response.data.orders); 
     } catch (error) {
       console.error(
         "Error fetching orders:",
@@ -22,8 +22,20 @@ const OrderPage = () => {
     fetchOrders();
   }, []);
 
-  const handleDelete = (id) => {
-    setOrders(orders.filter((order) => order.id !== id));
+
+
+  const handleDelete = async (orderID) => {
+    try {
+      axios.delete(`http://localhost:8000/api/orders/${orderID}`).then(() => {
+        setOrders(orders.filter((order) => order.orderID !== orderID));
+
+      });
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      console.log(error.error);
+      console.log(error.message);
+      alert("There was an error deleting the order.");
+    }
   };
 
   return (
@@ -32,19 +44,31 @@ const OrderPage = () => {
       <div className="orders-container">
         <div className="header">
           <h2>Manage Orders</h2>
-          
         </div>
         <div className="orders-list">
           {orders.map((order) => (
-            <div key={order.id} className="order-card">
+            <div key={order.orderID} className="order-card">
               <div className="order-info">
-                <strong>Order #{order.id}</strong>
-                <p>Customer: {order.customer}</p>
-                <p>Items: {order.items}</p>
-                <p>Total: {order.total}</p>
+                <strong>Order #{order.orderID}</strong>
+                <p>Total Price: ${order.totalPrice}</p>
+                <div className="order-items">
+                  {order.menu.map((item, index) => (
+                    <div key={index} className="order-item">
+                      <p>{item.menuName}</p>
+                      <p>Quantity: {item.quantity}</p>
+                      <p>Price: ${item.price}</p>
+                      <p>Total: ${item.totalPrice}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="actions">                
-                <button className="delete-btn" onClick={() => handleDelete(order.id)}>Delete</button>
+              <div className="actions">
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(order.orderID)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}

@@ -24,13 +24,19 @@ class MenuController extends Controller
   
     public function store(Request $request)
     {
-       
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'category' => 'required|string|max:255'
+        ]);
 
         $menu = new Menu();
-        $menu->name = $request->name;
-        $menu->description = $request->description;
-        $menu->price = $request->price;
-        $menu->category = $request->category;
+        $menu->name = $validatedData['name'];
+        $menu->description = $validatedData['description'];
+        $menu->price = $validatedData['price'];
+        $menu->category = $validatedData['category'];
+        
         if ($request->hasFile('image')) {
             $menu->image = $request->file('image')->store('menu_images', 'public');
         }
@@ -48,7 +54,6 @@ class MenuController extends Controller
     
     public function update(Request $request, Menu $menu)
 {
-    // Validate the incoming data
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'description' => 'required|string',

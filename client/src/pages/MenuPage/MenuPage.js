@@ -220,10 +220,11 @@ const MenuPage = () => {
         type="number"
         placeholder="Price"
         value={newMenu.price}
-        onChange={(e) =>
-          setNewMenu({ ...newMenu, price: e.target.value })
-        }
-      />
+        onChange={(e) => {
+        const value = Math.max(0, e.target.value);
+          setNewMenu({ ...newMenu, price: value });
+      }}
+    />
       <select
         value={newMenu.category}
         onChange={(e) =>

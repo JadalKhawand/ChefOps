@@ -8,17 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class WorkerController extends Controller
 {
-    /**
-     * Display a listing of the workers.
-     */
+
     public function index()
     {
         return response()->json(Worker::all());
     }
 
-    /**
-     * Store a newly created worker in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -31,16 +26,14 @@ class WorkerController extends Controller
         $worker = Worker::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Hashing the password for security
+            'password' => Hash::make($request->password), 
             'role' => $request->role,
         ]);
 
         return response()->json(['message' => 'Worker created successfully', 'worker' => $worker], 201);
     }
 
-    /**
-     * Display the specified worker.
-     */
+    
     public function show($id)
     {
         $worker = Worker::find($id);
@@ -50,9 +43,7 @@ class WorkerController extends Controller
         return response()->json($worker);
     }
 
-    /**
-     * Update the specified worker in storage.
-     */
+    
     public function update(Request $request, $id)
     {
         $worker = Worker::find($id);
@@ -77,9 +68,7 @@ class WorkerController extends Controller
         return response()->json(['message' => 'Worker updated successfully', 'worker' => $worker]);
     }
 
-    /**
-     * Remove the specified worker from storage.
-     */
+    
     public function destroy($id)
     {
         $worker = Worker::find($id);

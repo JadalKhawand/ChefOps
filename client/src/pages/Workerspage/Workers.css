@@ -8,7 +8,7 @@ body {
 .page-container {
   display: flex;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .workers-container {
@@ -19,7 +19,7 @@ body {
 }
 
 .sidebar {
-  width: 250px; 
+  width: 250px;
   background: black;
   color: white;
   height: 100vh;
@@ -56,7 +56,7 @@ body {
 
 .worker-card {
   background: white;
-  padding: 20px; /* Reduced padding for better spacing */
+  padding: 20px; 
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -102,59 +102,26 @@ body {
   background: red;
 }
 
-/* Edit Form Styles */
-.edit-form {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
 
-.edit-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.edit-form .save-btn,
-.edit-form .cancel-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.edit-form .save-btn {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.edit-form .cancel-btn {
-  background-color: #f44336;
-  color: white;
-}
-
-.edit-form .save-btn:hover {
-  background-color: #45a049;
-}
-
-.edit-form .cancel-btn:hover {
-  background-color: #e53935;
+.add-formy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 1001;
   width: 400px;
 }
 
@@ -172,19 +139,11 @@ body {
   border-radius: 8px;
   font-size: 1rem;
 }
+
 .add-form .actions {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-}
-
-.add-form .save-btn,
-.add-form .cancel-btn {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
 }
 
 .add-form .save-btn,
@@ -210,14 +169,4 @@ body {
 .add-form .save-btn:hover,
 .add-form .cancel-btn:hover {
   opacity: 0.9;
-}
-
-.add-formy-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
 }

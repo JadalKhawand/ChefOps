@@ -107,8 +107,11 @@ const WorkersPage = () => {
             <input type="email" name="email" value={newWorker.email} onChange={(e) => setNewWorker({ ...newWorker, email: e.target.value })} placeholder="Email" />
             <input type="password" name="password" value={newWorker.password} onChange={(e) => setNewWorker({ ...newWorker, password: e.target.value })} placeholder="Password" />
             <input type="text" name="role" value={newWorker.role} onChange={(e) => setNewWorker({ ...newWorker, role: e.target.value })} placeholder="Role" />
+            <div className="actions"> 
+
             <button className="save-btn" onClick={handleAddWorker}>Save</button>
             <button className="cancel-btn" onClick={() => setAddWorkerBox(false)}>Cancel</button>
+            </div>
           </div>
         )}
 
@@ -118,8 +121,10 @@ const WorkersPage = () => {
             <input type="text" name="name" value={editingWorker.name} onChange={handleInputChange} placeholder="Name" />
             <input type="email" name="email" value={editingWorker.email} onChange={handleInputChange} placeholder="Email" />
             <input type="text" name="role" value={editingWorker.role} onChange={handleInputChange} placeholder="Role" />
+            <div className="actions"> 
             <button className="save-btn" onClick={handleUpdate}>Save</button>
             <button className="cancel-btn" onClick={() => setEditingWorker(null)}>Cancel</button>
+            </div>
           </div>
         )}
       </div>

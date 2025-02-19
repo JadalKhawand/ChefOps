@@ -26,7 +26,8 @@ Route::get('/api/menus/{menu}', [MenuController::class, 'show'])->name('menus.sh
 
 Route::post('/api/menus/update/{menu}', [MenuController::class, 'update']);
 
-Route::apiResource('menus', MenuController::class);Route::apiResource('menus', MenuController::class);Route::delete('/api/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+Route::delete('/api/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+Route::apiResource('menus', MenuController::class);
 
 Route::post('/api/login', [AuthController::class, 'login']);
 Route::post('/api/register', [AuthController::class, 'register']);

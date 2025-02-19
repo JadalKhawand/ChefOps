@@ -14,7 +14,7 @@ class Worker extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Add 'role' here instead of 'role_id'
+        'role', 
     ];
 
     protected $hidden = [

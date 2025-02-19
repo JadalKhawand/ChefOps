@@ -83,14 +83,21 @@ class MenuController extends Controller
 
 public function destroy($id)
 {
-    $menu = Menu::findOrFail($id);
+    try {
+        $menu = Menu::findOrFail($id);
 
-    DB::table('order_menu')->where('menuID', $id)->update(['menuID' => null]);
+        DB::table('order_menu')->where('menuID', $id)->update(['menuID' => null]);
 
-    $menu->delete();
+        $menu->delete();
 
-    return response()->json(['message' => 'Menu deleted successfully']);
+        return response()->json(['message' => 'Menu deleted successfully'], 200);
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return response()->json(['error' => 'Menu not found'], 404);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'An error occurred while deleting the menu', 'details' => $e->getMessage()], 500);
+    }
 }
+
 
 
 }

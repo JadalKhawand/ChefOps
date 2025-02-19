@@ -25,7 +25,9 @@ const WorkersPage = () => {
   const fetchWorkers = async () => {
     try {
       const response = await axios.get(API_URL);
+      console.log(response.data)
       setWorkers(response.data);
+
     } catch (error) {
       console.error("Error fetching workers:", error);
     }
@@ -48,6 +50,7 @@ const WorkersPage = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setWorkers([...workers, response.data]);
+      fetchWorkers();
       setNewWorker({ name: "", email: "", password: "", role: "" });
       setAddWorkerBox(false); 
     } catch (error) {
@@ -79,6 +82,7 @@ const WorkersPage = () => {
           worker.id === editingWorker.id ? response.data : worker
         )
       );
+      fetchWorkers();
       setEditWorkerBox(false);
       setEditingWorker(null);
 
@@ -107,20 +111,21 @@ const WorkersPage = () => {
           <button className="add-worker" onClick={() => setAddWorkerBox(true)}>Add New Worker</button>
         </div>
 
-        <div className="workers-list">
-          {workers.map(worker => (
-            <div key={worker.id} className="worker-card">
-              <div className="worker-info">
-                <strong>{worker.name}</strong>
-                <p>{worker.role} | <a href={`mailto:${worker.email}`}>{worker.email}</a></p>
+          <div className="workers-list">
+            {workers.map((worker, index) => (
+              <div key={worker.id || index} className="worker-card">  
+                <div className="worker-info">
+                  <strong>{worker.name}</strong>
+                  <p>{worker.role} | <a href={`mailto:${worker.email}`}>{worker.email}</a></p>
+                </div>
+                <div className="actions">
+                  <button className="edit-btn" onClick={() => startEditing(worker)}>Edit</button>
+                  <button className="delete-btn" onClick={() => deleteWorker(worker.id)}>Delete</button>
+                </div>
               </div>
-              <div className="actions">
-                <button className="edit-btn" onClick={() => startEditing(worker)}>Edit</button>
-                <button className="delete-btn" onClick={() => deleteWorker(worker.id)}>Delete</button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
 
         {addWorkerBox && (
           <div className="add-formy-overlay">

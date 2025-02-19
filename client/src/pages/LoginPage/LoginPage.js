@@ -27,6 +27,12 @@ const Login = () => {
 
       console.log("Login successful", data);
       localStorage.setItem("token", data.token);
+      if(localStorage.getItem("token")){
+        navigate("/")
+      }
+      else{
+        console.log("error")
+      }
       navigate("/");
     } catch (error) {
       setError(error.message);
